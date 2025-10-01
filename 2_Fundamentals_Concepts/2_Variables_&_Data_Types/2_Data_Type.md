@@ -1,511 +1,215 @@
-### **C# Data Types: Comprehensive Guide with Detailed Explanations**
+# C# Data Types: Overview and Primitive Types in Detail
 
-## **1. Understanding Data Types in C#**
+## Brief Overview of C# Data Types
 
-### **What are Data Types?**
+In C#, data types are categorized into two main groups:
 
-**Definition:** Data types are classifications that specify:
+1. **Value Types**: Store data directly in memory
 
-- What type of value a variable can hold
-- How much memory to allocate
-- What operations can be performed on the data
-- How the data is stored in memory
+   - **Primitive types** (int, float, bool, etc.)
+   - **Struct types** (DateTime, TimeSpan, etc.)
+   - **Enum types** (user-defined named constants)
 
-**Analogy:** Think of data types like different types of containers:
+2. **Reference Types**: Store references to data in memory
+   - **Class types** (String, Arrays, Custom classes)
+   - **Interface types**
+   - **Delegate types**
+   - **Dynamic types**
 
-- **Value types** are like fixed-size boxes - each has its own space
-- **Reference types** are like storage lockers - you get a key (reference) to access the content
+C# is a statically-typed language, meaning you must declare the type of a variable before using it. The type determines:
 
-### **The Type System Architecture**
+- How much memory is allocated
+- What values can be stored
+- What operations can be performed
+
+---
+
+## Detailed Explanation of Primitive Types
+
+Primitive types (also called simple types) are the most basic data types in C#. They're built into the language and directly mapped to .NET Framework types. Here's a detailed breakdown:
+
+### 1. Integer Types
+
+| Type     | Size (bits) | Range                                                   | .NET Type       | Example Usage                                 |
+| -------- | ----------- | ------------------------------------------------------- | --------------- | --------------------------------------------- |
+| `sbyte`  | 8           | -128 to 127                                             | `System.SByte`  | `sbyte temperature = -30;`                    |
+| `byte`   | 8           | 0 to 255                                                | `System.Byte`   | `byte age = 25;`                              |
+| `short`  | 16          | -32,768 to 32,767                                       | `System.Int16`  | `short count = 1000;`                         |
+| `ushort` | 16          | 0 to 65,535                                             | `System.UInt16` | `ushort port = 8080;`                         |
+| `int`    | 32          | -2,147,483,648 to 2,147,483,647                         | `System.Int32`  | `int population = 7_800_000_000;`             |
+| `uint`   | 32          | 0 to 4,294,967,295                                      | `System.UInt32` | `uint positiveId = 100;`                      |
+| `long`   | 64          | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `System.Int64`  | `long starsInGalaxy = 100_000_000_000;`       |
+| `ulong`  | 64          | 0 to 18,446,744,073,709,551,615                         | `System.UInt64` | `ulong veryBigNumber = 18446744073709551615;` |
+
+**Key Points:**
+
+- `int` is the most commonly used integer type
+- Underscores (`_`) can be used as digit separators for readability (C# 7.0+)
+- Unsigned types (`u` prefix) only store non-negative values
+- Choose the smallest type that can accommodate your expected range to save memory
+
+### 2. Floating-Point Types
+
+| Type      | Size (bits) | Precision            | Range                         | .NET Type        | Example Usage               |
+| --------- | ----------- | -------------------- | ----------------------------- | ---------------- | --------------------------- |
+| `float`   | 32          | 7 decimal digits     | ±1.5 × 10⁻⁴⁵ to ±3.4 × 10³⁸   | `System.Single`  | `float price = 19.99F;`     |
+| `double`  | 64          | 15-16 decimal digits | ±5.0 × 10⁻³²⁴ to ±1.7 × 10³⁰⁸ | `System.Double`  | `double pi = 3.1415926535;` |
+| `decimal` | 128         | 28-29 decimal digits | ±1.0 × 10⁻²⁸ to ±7.9 × 10²⁸   | `System.Decimal` | `decimal money = 999.99M;`  |
+
+**Key Points:**
+
+- `double` is the default floating-point type in C#
+- `float` requires `F` suffix to avoid compilation error
+- `decimal` requires `M` suffix and is ideal for financial calculations
+- `decimal` has less range but more precision than `double`
+- Floating-point types can represent special values: `PositiveInfinity`, `NegativeInfinity`, and `NaN`
+
+### 3. Character Type
+
+| Type   | Size (bits) | Range            | .NET Type     | Example Usage       |
+| ------ | ----------- | ---------------- | ------------- | ------------------- |
+| `char` | 16          | U+0000 to U+FFFF | `System.Char` | `char grade = 'A';` |
+
+**Key Points:**
+
+- Represents a single Unicode character
+- Uses single quotes: `'a'`, `'?'`, `'$'`
+- Can represent escape sequences: `'\n'` (newline), `'\t'` (tab), `'\\'` (backslash)
+- Can represent Unicode characters: `'\u0041'` (A), `'\u03A9'` (Ω)
+
+### 4. Boolean Type
+
+| Type   | Size (bits) | Values          | .NET Type        | Example Usage          |
+| ------ | ----------- | --------------- | ---------------- | ---------------------- |
+| `bool` | 8           | `true`, `false` | `System.Boolean` | `bool isValid = true;` |
+
+**Key Points:**
+
+- Represents truth values
+- Cannot be implicitly converted to/from integer types
+- Essential for conditional statements and logical operations
+
+### 5. Special Primitive Types
+
+| Type      | Description                     | .NET Type       | Example Usage           |
+| --------- | ------------------------------- | --------------- | ----------------------- |
+| `object`  | Base type for all types in .NET | `System.Object` | `object obj = "Hello";` |
+| `string`  | Sequence of Unicode characters  | `System.String` | `string name = "John";` |
+| `dynamic` | Resolves type at runtime        | `System.Object` | `dynamic d = 10;`       |
+
+**Key Points:**
+
+- `object` is the ultimate base class for all types
+- `string` is a reference type but has some value-type characteristics
+- `dynamic` bypasses static type checking at compile time
+
+---
+
+## Important Characteristics of Primitive Types
+
+### 1. Default Values
+
+All primitive types have default values when not initialized:
+
+- Numeric types: `0`
+- `bool`: `false`
+- `char`: `'\0'` (null character)
+- `object`/`string`/`dynamic`: `null`
+
+### 2. Literal Suffixes
+
+- `F` or `f` for `float`
+- `D` or `d` for `double` (optional)
+- `M` or `m` for `decimal`
+- `U` or `u` for `uint`, `ulong`
+- `L` or `l` for `long`, `ulong`
+- `UL` or `ul` for `ulong`
+
+### 3. Type Conversion
+
+- **Implicit conversion**: When no data loss occurs (e.g., `int` to `long`)
+- **Explicit conversion**: When data loss might occur (e.g., `double` to `int`)
+- **Parsing**: Converting strings to numeric types (e.g., `int.Parse("123")`)
+
+### 4. Overflow Handling
+
+- By default, arithmetic operations on integer types ignore overflow
+- Use `checked` keyword to enable overflow checking:
+  ```csharp
+  checked
+  {
+      int x = int.MaxValue;
+      int y = x + 1; // Throws OverflowException
+  }
+  ```
+
+### 5. Nullable Types
+
+All primitive types can be made nullable using `?`:
 
 ```csharp
-// C# has a unified type system where everything derives from System.Object
-object obj1 = 10;           // int (value type) boxed to object
-object obj2 = "Hello";      // string (reference type)
-object obj3 = new List<int>(); // custom reference type
-
-// This means all types share common characteristics
-Console.WriteLine(obj1.GetType()); // System.Int32
-Console.WriteLine(obj2.GetType()); // System.String
-Console.WriteLine(obj1.ToString()); // All types have ToString()
-
+int? nullableInt = null;
+bool? hasValue = null;
 ```
 
 ---
 
-## **2. Value Types vs Reference Types: Deep Dive**
+## Practical Examples
 
-### **Memory Management Explained**
-
-**Value Types (Stack Allocation):**
-
-- Stored in the **stack** - fast, LIFO (Last-In-First-Out) memory
-- Memory allocated when variable comes into scope
-- Automatically freed when variable goes out of scope
-- Each variable has its own copy of data
-
-**Reference Types (Heap Allocation):**
-
-- Stored in the **heap** - larger, dynamic memory pool
-- Memory allocated with `new` keyword
-- Garbage collected when no longer referenced
-- Multiple variables can reference the same data
-
-### **Visualizing the Difference**
+### Working with Numeric Types
 
 ```csharp
-// VALUE TYPES - Independent copies
-int a = 10;         // [Stack] a = 10
-int b = a;          // [Stack] b = 10 (COPY created)
-b = 20;             // [Stack] b = 20, a remains 10
+// Integer types
+int count = 42;
+long population = 7_800_000_000;
+byte age = 25;
 
-// REFERENCE TYPES - Shared references
-int[] array1 = new int[] { 1, 2, 3 };  // [Heap] creates array, [Stack] array1 points to it
-int[] array2 = array1;                 // [Stack] array2 points to SAME array
-array2[0] = 100;                       // Modifies the shared array
-Console.WriteLine(array1[0]);          // 100 - both see the change
+// Floating-point types
+float price = 19.99F;
+double pi = 3.1415926535;
+decimal money = 999.99M;
 
-// Memory diagram:
-// Stack: array1 → [Heap Address]
-// Stack: array2 → [Same Heap Address]
-// Heap: [100, 2, 3]
-
+// Arithmetic operations
+int sum = count + age;
+double area = pi * 10 * 10;
+decimal total = money * 1.08M; // Add 8% tax
 ```
 
-### **Performance Implications**
+### Working with Characters and Booleans
 
 ```csharp
-// Value types are generally faster for:
-struct Point { public int X, Y; }
+// Characters
+char firstInitial = 'J';
+char newline = '\n';
+char omega = '\u03A9';
 
-void ProcessPoints()
-{
-    Point p1 = new Point { X = 10, Y = 20 };  // Allocated on stack - fast
-    Point p2 = p1;                            // Copy is cheap
-    // p1 and p2 are independent
-}
+// Booleans
+bool isAdult = age >= 18;
+bool hasDiscount = price > 50;
 
-// Reference types involve overhead:
-class PointClass { public int X, Y; }
-
-void ProcessPointClasses()
-{
-    PointClass p1 = new PointClass { X = 10, Y = 20 }; // Heap allocation
-    PointClass p2 = p1;                                // Copy reference only
-    // p1 and p2 share same object
-}
-
+// Logical operations
+bool canBuy = isAdult && hasDiscount;
+bool isWeekend = day == "Saturday" || day == "Sunday";
 ```
 
----
-
-# **C# Primitive Types: Comprehensive Deep Dive**
-
-## **1. What Are Primitive Types? - Extended Definition**
-
-### **Technical Definition:**
-
-Primitive types are **built-in value types** that represent the most fundamental data representations in the C# language. They are directly supported by the compiler and have special syntax for literal values.
-
-### **Key Characteristics Expanded:**
-
-1. **Compiler Support:** The compiler has intrinsic knowledge of these types
-2. **Literal Syntax:** Special syntax for writing values directly in code
-3. **Alias System:** They are aliases for types in the `System` namespace
-4. **Value Semantics:** Follow value type behavior (stack allocation, copying)
-5. **Default Values:** Have well-defined default values when not initialized
-
-### **The Alias System Explained:**
+### Type Conversion Examples
 
 ```csharp
-// These are equivalent - int is an alias for System.Int32
-int number1 = 10;                   // C# alias (primitive)
-System.Int32 number2 = 10;          // .NET Framework type
-
-// All primitive types have this relationship
-bool flag1 = true;                  // C# alias
-System.Boolean flag2 = true;        // .NET type
-
-double value1 = 3.14;               // C# alias
-System.Double value2 = 3.14;        // .NET type
-
-// Why aliases exist:
-// - Shorter, cleaner syntax
-// - Language familiarity for C/C++/Java developers
-// - Compiler can provide special treatment
-
-```
-
----
-
-## **2. Integer Types: Complete Breakdown**
-
-### **Understanding Integer Ranges**
-
-**Why Different Integer Sizes?**
-
-- **Memory efficiency:** Use only as much memory as needed
-- **Performance:** Smaller types can be processed faster
-- **Range requirements:** Different applications need different number ranges
-
-```csharp
-// Demonstrating integer ranges
-byte maxByte = byte.MaxValue;        // 255
-byte minByte = byte.MinValue;        // 0
-
-int maxInt = int.MaxValue;           // 2,147,483,647
-int minInt = int.MinValue;           // -2,147,483,648
-
-long maxLong = long.MaxValue;        // 9,223,372,036,854,775,807
-Console.WriteLine($"Max long: {maxLong:N0}"); // 9 quintillion+
-
-// Practical usage scenarios
-byte age = 25;                       // ✅ Age fits in byte (0-255)
-short temperature = -40;             // ✅ Temperature range
-int population = 2000000;            // ✅ City population
-long globalDebt = 280000000000000;   // ✅ Global financial numbers
-
-```
-
-### **Signed vs Unsigned Explained**
-
-**Signed Integers:** Can represent both positive and negative numbers
-
-- Use **two's complement** system for negative numbers
-- One bit used for sign (0=positive, 1=negative)
-- Range: -2^(n-1) to 2^(n-1)-1
-
-**Unsigned Integers:** Can only represent positive numbers
-
-- All bits used for magnitude
-- Range: 0 to 2^n-1
-
-```csharp
-// Signed examples
-sbyte negative = -100;               // Can be negative
-int balance = -500;                  // Bank balance can be negative
-
-// Unsigned examples
-byte age = 25;                       // Age cannot be negative
-uint fileSize = 4000000000;          // File size cannot be negative
-
-// Choosing between signed/unsigned:
-// Use UNSIGNED when values cannot logically be negative
-// Use SIGNED when negative values are possible and meaningful
-
-```
-
----
-
-## **3. Floating-Point Types: Precision and Limitations**
-
-### **How Floating-Point Numbers Work**
-
-**Scientific Notation Basis:** Floating-point numbers use a format similar to scientific notation:
-
-- **Sign bit:** Positive or negative
-- **Exponent:** Scale of the number
-- **Mantissa:** Significant digits
-
-```csharp
-// Understanding precision limitations
-float singlePrecision = 1.23456789f;
-Console.WriteLine(singlePrecision);  // 1.234568 (rounded to ~7 digits)
-
-double doublePrecision = 1.23456789012345;
-Console.WriteLine(doublePrecision);  // 1.23456789012345 (~15-16 digits)
-
-decimal exactPrecision = 1.2345678901234567890123456789m;
-Console.WriteLine(exactPrecision);   // 1.2345678901234567890123456789 (exact)
-
-// The precision problem in action
-float a = 0.1f;
-float b = 0.2f;
-float c = a + b;
-Console.WriteLine(c == 0.3f);        // False! (0.30000001192092896)
-
-```
-
-### **When to Use Each Floating-Point Type**
-
-### **float - Use For:**
-
-- Graphics and game development (3D coordinates)
-- Scientific measurements where ~7 digits suffice
-- Large datasets where memory savings matter
-
-```csharp
-// Game development example
-struct Vector3
-{
-    public float X, Y, Z;  // ✅ 3D coordinates - float is standard
-
-    public Vector3(float x, float y, float z)
-    {
-        X = x; Y = y; Z = z;
-    }
-}
-
-Vector3 position = new Vector3(1.5f, 2.3f, 5.7f);
-
-```
-
-### **double - Use For:**
-
-- General-purpose decimal calculations
-- Scientific computations
-- Most mathematical operations
-
-```csharp
-// Scientific calculations
-double gravitationalConstant = 6.67430e-11;
-double speedOfLight = 299792458.0;
-double planckConstant = 6.62607015e-34;
-
-// Everyday calculations
-double average = 85.67;
-double percentage = 0.8567;
-
-```
-
-### **decimal - Use For:**
-
-- Financial calculations (money)
-- Currency exchange rates
-- Any calculation requiring exact decimal representation
-
-```csharp
-// Financial application
-decimal salary = 55000.00m;
-decimal taxRate = 0.28m;
-decimal taxAmount = salary * taxRate;  // Exact calculation
-decimal netSalary = salary - taxAmount;
-
-// Currency conversion
-decimal dollars = 100.00m;
-decimal exchangeRate = 0.85m;  // USD to EUR
-decimal euros = dollars * exchangeRate;  // Precise result
-
-```
-
----
-
-## **4. Boolean Type: Logical Foundations**
-
-### **Understanding Boolean Logic**
-
-**Definition:** The `bool` type represents logical states with only two possible values: `true` or `false`. It's the foundation of all decision-making in programs.
-
-**Under the Hood:**
-
-- Stored as 1 byte (8 bits), though only 1 bit is needed
-- This is for memory alignment and performance reasons
-- Values are actually stored as 0 (false) and 1 (true) at the hardware level
-
-```csharp
-// Boolean operations and their meanings
-bool isSunny = true;
-bool isWeekend = false;
-
-// Logical AND - both must be true
-bool canPicnic = isSunny && isWeekend;  // false
-
-// Logical OR - at least one true
-bool canWalk = isSunny || isWeekend;    // true
-
-// Logical NOT - inverts the value
-bool isRainy = !isSunny;                // false
-
-// Complex conditions
-int age = 25;
-bool hasLicense = true;
-bool canDrive = age >= 18 && hasLicense;  // true
-
-```
-
-### **Boolean Evaluation Short-Circuiting**
-
-**Important Concept:** C# uses short-circuit evaluation in logical operations:
-
-```csharp
-// Short-circuit AND (&&) - if left is false, right is not evaluated
-bool result1 = false && SomeExpensiveMethod();  // SomeExpensiveMethod never called
-
-// Short-circuit OR (||) - if left is true, right is not evaluated
-bool result2 = true || SomeExpensiveMethod();   // SomeExpensiveMethod never called
-
-// This is important for:
-bool isValid = input != null && input.Length > 0;
-// If input is null, input.Length won't be called (avoiding NullReferenceException)
-
-bool UseShortCircuiting()
-{
-    // This method demonstrates safe access patterns
-    string userInput = null;
-
-    // Safe due to short-circuiting
-    if (userInput != null && userInput.Length > 5)
-    {
-        return true;
-    }
-    return false;
-}
-
-```
-
----
-
-## **5. Character and String Types: Text Handling**
-
-### **Character Type Deep Dive**
-
-**Unicode Foundation:** C# `char` type uses UTF-16 encoding, supporting international characters:
-
-```csharp
-// Basic characters
-char letter = 'A';                    // Latin capital A
-char digit = '9';                     // Digit nine
-char symbol = '€';                    // Euro symbol
-
-// Unicode characters
-char heart = '\\u2665';                // ♥ Black Heart Suit
-char chess = '\\u265E';                // ♞ Black Chess Knight
-char chinese = '\\u4F60';              // 你 Chinese character
-
-// Control characters
-char newline = '\\n';                  // New line
-char tab = '\\t';                      // Tab
-char backspace = '\\b';                 // Backspace
-char nullChar = '\\0';                 // Null character
-
-// Character classification
-char testChar = '7';
-bool isDigit = char.IsDigit(testChar);        // true
-bool isLetter = char.IsLetter(testChar);      // false
-bool isWhiteSpace = char.IsWhiteSpace(' ');   // true
-bool isUpper = char.IsUpper('A');             // true
-
-// Character conversion
-char lower = 'a';
-char upper = char.ToUpper(lower);             // 'A'
-char lowerAgain = char.ToLower(upper);        // 'a'
-
-```
-
-### **String Type: More Than Just Text**
-
-**Strings are Immutable:** Once created, a string cannot be changed. Operations that appear to modify strings actually create new ones.
-
-```csharp
-// Understanding string immutability
-string original = "Hello";
-string modified = original + " World";  // Creates NEW string
-
-// Memory impact:
-// original → "Hello"
-// modified → "Hello World" (completely new object)
-
-// Efficient string building
-string inefficient = "";
-for (int i = 0; i < 1000; i++)
-{
-    inefficient += i.ToString();  // Creates 1000 new strings!
-}
-
-// Better approach
-StringBuilder efficient = new StringBuilder();
-for (int i = 0; i < 1000; i++)
-{
-    efficient.Append(i.ToString());  // Modifies same buffer
-}
-string result = efficient.ToString();
-
-```
-
-### **String Interpolation and Formatting**
-
-```csharp
-// Composite formatting (traditional)
-string name = "John";
-int age = 30;
-string message1 = string.Format("Name: {0}, Age: {1}", name, age);
-
-// String interpolation (modern)
-string message2 = $"Name: {name}, Age: {age}";
-
-// Format specifiers
-decimal price = 19.99m;
-DateTime now = DateTime.Now;
-
-string currency = $"{price:C}";          // $19.99
-string percentage = $"{0.25:P}";         // 25.00%
-string largeNumber = $"{1000000:N0}";    // 1,000,000
-string date = $"{now:yyyy-MM-dd}";       // 2024-01-15
-
-// Verbatim strings for paths and multi-line
-string path = @"C:\\Users\\John\\Documents";  // No escape characters needed
-string sqlQuery = @"
-    SELECT *
-    FROM Users
-    WHERE Age > 18";
-
-```
-
----
-
-## **6. Advanced Concepts and Best Practices**
-
-### **Nullable Value Types**
-
-**Problem:** Primitive value types cannot be `null`, but sometimes you need to represent "no value"
-
-**Solution:** Nullable types with `?` suffix:
-
-```csharp
-// Regular value types cannot be null
-int cannotBeNull = 0;          // Must have a value
-// int willBeNull = null;      // Compiler error!
-
-// Nullable value types
-int? canBeNull = null;         // Can be null or int
-int? age = 25;                 // Can hold value
-int? unknownAge = null;        // Can represent "unknown"
-
-// Working with nullable types
-if (canBeNull.HasValue)
-{
-    int actualValue = canBeNull.Value;  // Access the value
-}
-
-// Null coalescing operator
-int safeAge = unknownAge ?? 0;  // Use 0 if null
-
-// Null-conditional operator
-int? length = name?.Length;     // null if name is null, otherwise name.Length
-
-```
-
-### **Type Conversion Best Practices**
-
-```csharp
-// 1. Implicit conversion (safe)
-int small = 100;
-long large = small;  // Always safe - no data loss
-
-// 2. Explicit casting (potential data loss)
-double precise = 9.99;
-int approximate = (int)precise;  // 9 - decimal lost
-
-// 3. Convert class (handles null and edge cases)
-string input = "123";
-int number1 = Convert.ToInt32(input);  // Handles null as 0
-int number2 = Convert.ToInt32(null);   // Returns 0
-
-// 4. Parse methods (strict)
-int number3 = int.Parse("123");        // Throws on invalid input
-
-// 5. TryParse (safe)
-if (int.TryParse("123", out int result))
+// Implicit conversion
+int i = 123;
+long l = i; // No data loss
+
+// Explicit conversion
+double d = 3.14;
+int truncated = (int)d; // truncated = 3
+
+// Parsing
+string numberStr = "42";
+int parsed = int.Parse(numberStr);
+
+// Safe parsing
+string invalid = "abc";
+if (int.TryParse(invalid, out int result))
 {
     // Use result
 }
@@ -513,44 +217,96 @@ else
 {
     // Handle invalid input
 }
-
-// 6. System.Convert for base conversions
-string binary = Convert.ToString(255, 2);   // "11111111"
-string hex = Convert.ToString(255, 16);     // "ff"
-int fromHex = Convert.ToInt32("FF", 16);    // 255
-
 ```
 
-### **Memory and Performance Optimization**
+### Nullable Types
 
 ```csharp
-// Choose appropriate types for memory efficiency
-struct SmallData
+// Nullable declaration
+int? nullableInt = null;
+bool? hasValue = true;
+
+// Check for value
+if (nullableInt.HasValue)
 {
-    public byte X, Y, Z;      // 3 bytes total
-    public bool IsActive;     // 1 byte
-    // Total: 4 bytes
+    int value = nullableInt.Value;
 }
 
-struct LargeData
-{
-    public int X, Y, Z;       // 12 bytes total
-    public bool IsActive;     // 1 byte (but padding may make it 16 bytes)
-    // Total: 16 bytes due to memory alignment
-}
+// GetValueOrDefault
+int safeValue = nullableInt.GetValueOrDefault(); // Returns 0 if null
 
-// Stack allocation benefits
-void ProcessData()
-{
-    int[] heapArray = new int[1000];     // Heap allocation - slower
-    Span<int> stackArray = stackalloc int[1000]; // Stack allocation - faster
-
-    // Use stackalloc for small, short-lived arrays
-    for (int i = 0; i < 1000; i++)
-    {
-        stackArray[i] = i;  // Fast stack access
-    }
-}
-
+// Null coalescing operator
+int actualValue = nullableInt ?? 0; // Returns 0 if null
 ```
 
+---
+
+## Best Practices for Using Primitive Types
+
+1. **Choose the right type for the job**:
+
+   - Use `int` for general integer arithmetic
+   - Use `double` for scientific calculations
+   - Use `decimal` for financial calculations
+   - Use `long` for large integers (like database IDs)
+
+2. **Be explicit about numeric literals**:
+
+   ```csharp
+   // Good
+   float f = 3.14F;
+   decimal d = 100.50M;
+
+   // Bad (may cause precision issues)
+   float f = 3.14; // Treated as double, then converted
+   ```
+
+3. **Use meaningful variable names**:
+
+   ```csharp
+   // Good
+   int customerAge = 25;
+   double accountBalance = 1500.75;
+
+   // Bad
+   int a = 25;
+   double b = 1500.75;
+   ```
+
+4. **Initialize variables**:
+
+   ```csharp
+   // Good
+   int count = 0;
+   bool isValid = false;
+
+   // Bad (uninitialized)
+   int count;
+   bool isValid;
+   ```
+
+5. **Handle potential overflow**:
+
+   ```csharp
+   // For critical calculations
+   checked
+   {
+       int result = x * y;
+   }
+
+   // Or use larger types
+   long result = (long)x * y;
+   ```
+
+6. **Prefer `TryParse` over `Parse` for user input**:
+   ```csharp
+   // Safe parsing
+   if (int.TryParse(userInput, out int number))
+   {
+       // Use number
+   }
+   else
+   {
+       // Handle invalid input
+   }
+   ```
