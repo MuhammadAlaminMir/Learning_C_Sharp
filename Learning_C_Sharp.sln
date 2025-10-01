@@ -12,8 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Fundamentals_Concepts", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Learning_Plan", "0_Learning_Plan", "{FED78D87-84B7-E8D3-5B29-8712B4BF98D6}"
 	ProjectSection(SolutionItems) = preProject
-		learning_plan.md = learning_plan.md
 		harsha_course.md = harsha_course.md
+		learning_plan.md = learning_plan.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_OOPS", "3_OOPS", "{2CD56EC1-C9ED-0396-EB37-B6EDB79A6E55}"
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6_The_Ecosystems", "6_The_E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_First_Program", "2_Fundamentals_Concepts\1_First_Program\1_First_Program.csproj", "{1FB8EF30-F867-46A8-ADD4-95CF6B2A2CF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Variables", "2_Fundamentals_Concepts\2_Variables\2_Variables.csproj", "{B7A7EF54-896A-4380-887A-C8065C8BC2BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2_Variables_&_Data_Types", "2_Fundamentals_Concepts\2_Variables\2_Variables_&_Data_Types.csproj", "{B7A7EF54-896A-4380-887A-C8065C8BC2BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
