@@ -12,7 +12,7 @@ public class _7_Conditional
         Console.WriteLine(status);  // "Adult"
 
         // Equivalent to:
-        string status2;
+        string status2 = "";
         if (age >= 18)
             status2 = "Adult";
         else
