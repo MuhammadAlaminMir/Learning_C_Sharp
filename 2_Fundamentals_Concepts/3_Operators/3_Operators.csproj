@@ -8,8 +8,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <Compile Include="1_Operators.md" />
-  </ItemGroup>
+  <None Update="1_Operators.md">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
 
 </Project>

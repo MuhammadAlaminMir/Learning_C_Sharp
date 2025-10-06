@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Loops.md" />
-  </ItemGroup>
+  <None Remove="**/*.md" />
+</ItemGroup>
 
 </Project>

@@ -8,8 +8,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="2_Data_Type.md" />
-  </ItemGroup>
+ <ItemGroup>
+  <None Update="2_Data_Type.md">
+    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
 
 </Project>
