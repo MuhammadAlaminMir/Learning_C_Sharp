@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Method", "3_OOPS\3_Method
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4_Pillars_Of_OOP", "3_OOPS\4_Pillars_Of_OOP\4_Pillars_Of_OOP.csproj", "{45E69F52-2D81-461F-A2D9-07B2AD0D2560}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Type_Casting", "4_Intermediate_Concepts\1_Type_Casting\1_Type_Casting.csproj", "{05614E88-5939-494A-A154-AA238A4A724E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_Type_Conversion", "4_Intermediate_Concepts\1_Type_Conversion\1_Type_Conversion.csproj", "{05614E88-5939-494A-A154-AA238A4A724E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
