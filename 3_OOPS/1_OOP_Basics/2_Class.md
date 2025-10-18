@@ -37,6 +37,10 @@ Classes were introduced in Simula (1960s) as a way to simulate real-world entiti
 
 ### **2.2 Access Modifiers**
 
+## A class has only two access modifiers which is: public and internal, internal is the default access modifiers for class.
+
+## Access modifiers for the class members: 
+
 **Purpose:** Control the visibility and accessibility of class members
 
 | Modifier | Accessibility | Usage |
