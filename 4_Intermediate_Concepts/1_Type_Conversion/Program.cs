@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+Implicit_Casting.Examples();
+Explicit_Casting.Examples();
+Parse_TryParse.Examples();
+Conversion_Methods.Examples();
+
