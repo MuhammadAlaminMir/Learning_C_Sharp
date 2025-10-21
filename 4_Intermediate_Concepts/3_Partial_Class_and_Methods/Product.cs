@@ -1,6 +1,6 @@
 public partial class Product
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     // Optional implementation of the partial method
 
