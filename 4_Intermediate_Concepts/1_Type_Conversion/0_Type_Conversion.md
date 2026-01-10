@@ -17,9 +17,6 @@ This is the easiest and safest way. The C# compiler does it for you automaticall
 - **Analogy:** Pouring water from a small cup (`int`) into a large bucket (`long`). No spillage.
 
 
-**Code Example:**
-
-
 
 ### 2. Explicit Casting (The "Risky & Manual" Conversion)
 
@@ -29,10 +26,6 @@ Sometimes, you *need* to convert from a larger type to a smaller one. This is a 
 - **Why it's risky:** The smaller type might not be able to hold the value, leading to data loss or incorrect results.
 - **Analogy:** Pouring water from a large bucket (`long`) into a small cup (`int`). You might spill some water (data loss).
 - **Syntax:** You place the target type in parentheses `()` before the value you want to convert.
-
-
-**Code Example:**
-
 
 
 ---
@@ -67,9 +60,7 @@ The `System.Convert` class is a set of helper methods designed for all-purpose c
 
 - **What it does:** Provides a consistent way to convert between a wide variety of types (numbers, strings, booleans, dates, etc.).
 - **Behavior:** It's smart. It handles many conversions internally (like calling `Parse` for strings). When converting from a floating-point number to an integer, it uses **banker's rounding** (rounds to the nearest even number for .5 cases) instead of just truncating.
-- **Syntax:** `Convert.ToTargetType(value)`.
-
-**Code Example:**
+- **Syntax:** `Convert.ToTargetType(value)`
 
 
 
